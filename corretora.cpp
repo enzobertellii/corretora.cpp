@@ -42,10 +42,8 @@ void telainicial()
     initwindow(800, 600, "CORRETORA EPV", 300, 100);
     readimagefile("abc4.jpg", 0, 0, 800, 600);
 
-    // Escrevendo texto no topo
     escrevertexto(400, 50, "CORRETORA EPV", 3);
-
-    // Desenhando botões
+   
     botao(280, 360, 360, 400, "Ação", 0, BLUE, WHITE);
     botao(370, 360, 450, 400, "FII", 0, GREEN, WHITE);
     botao(460, 360, 540, 400, "Cripto", 0, RED, WHITE);
@@ -53,20 +51,18 @@ void telainicial()
 
 void botaografico (int x1, int y1, int x2, int y2, char rotulo[], int estado, int corbotao, int cortexto, int tamanho)
 {
-    // Desenha o retângulo do botão
+
     setcolor(corbotao);
     rectangle(x1, y1, x2, y2);
 
-    // Preenche o botão com a cor especificada
     setfillstyle(SOLID_FILL, corbotao);
     settextstyle(SANS_SERIF_FONT, HORIZ_DIR, tamanho);
     floodfill((x1 + x2) / 2, (y1 + y2) / 2, corbotao);
 
-    // Ajusta a cor do texto
     setcolor(cortexto);
     setbkcolor(corbotao);
 
-    // Centraliza o texto no botão
+   
     int text_width = textwidth(rotulo);
     int text_height = textheight(rotulo);
     int text_x = (x1 + x2) / 2 - text_width / 2;
@@ -81,10 +77,10 @@ void limparArea(int x, int y, int largura, int altura) {
 }
 
 void mostrarInfoPonto(int x, int y, struct dadosPontos ponto) {
-    // Limpar a área onde as informações serão exibidas
-    limparArea(600, 700, 489, 40); // Ajuste os valores conforme necessário
+    
+    limparArea(600, 700, 489, 40); 
 
-    // Mostrar as novas informações
+   
     char info[100];
     sprintf(info, "Mês:%s ,Preço:%d ,Variação:%d", ponto.mes, ponto.valor, ponto.porcentagem);
     setcolor(WHITE);
@@ -142,11 +138,11 @@ void mostrarInfoPonto(int x, int y, struct dadosPontos ponto) {
 
     escrevertexto(77, 110,"R$", 2);
 
-    //line(comecox,fimy,fimx,fimy);
+   
     setlinestyle(SOLID_LINE, 0, 2);
     for(i=0; i<12; i++)
     {
-        //circle(meses[i],fimy,2);
+       
     }
     setcolor(RED);
     srand(time(NULL));
@@ -193,11 +189,11 @@ void mostrarInfoPonto(int x, int y, struct dadosPontos ponto) {
             {
                 closegraph();
                 telainicial();
-                break; // Sai do loop para voltar à tela inicial
+                break; 
             }
             if (mousex() >= 1090 && mousex() <= 1250 && mousey() >= 700 && mousey() <= 800)
             {
-                // Exibir recomendação
+                
                 setcolor(WHITE);
                 settextstyle(SANS_SERIF_FONT, HORIZ_DIR, 2); // Tamanho menor para a recomendação
                 if(valores[0]>valores[11])
@@ -218,14 +214,14 @@ void mostrarInfoPonto(int x, int y, struct dadosPontos ponto) {
 
                 clearmouseclick(WM_LBUTTONDOWN);
             }
-            // Detecção de cliques nos pontos vermelhos
+            
            for (i = 0; i < 12; i++) {
     int raio = 6; // Raio do ponto vermelho
     if (mousex() >= meses[i] - raio && mousex() <= meses[i] + raio &&
         mousey() >= valores[i] - raio && mousey() <= valores[i] + raio) {
         mostrarInfoPonto(600, 700, vetor[i]);
         clearmouseclick(WM_LBUTTONDOWN);
-        break; // Saia do loop após encontrar o ponto correspondente
+        break; 
     }
 }
 
@@ -237,10 +233,10 @@ void mostrarInfoPonto(int x, int y, struct dadosPontos ponto) {
 
 void cliquemouse(int a)
 {
-    // Inicia uma nova janela gráfica
+   
     closegraph();
     initwindow(getmaxwidth(),getmaxheight(), "grafico", 0, 0);
-    //escrevertexto(725,580, ,2);
+    
     if(a==1)
     {
         escrevertexto(750,90, "BANCO BRADESCO (BBDC4)",6);
